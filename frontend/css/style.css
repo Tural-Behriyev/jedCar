@@ -84,9 +84,13 @@
 
 
 i {
-    position: absolute;
+    position: absolute; 
     right: 10%;
     top: 10px;
     font-size: 30px;
     color: red;
+}
+
+.green-bg {
+  color: green;
 }

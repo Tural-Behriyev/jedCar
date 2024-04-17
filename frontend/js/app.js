@@ -28,7 +28,6 @@ const showModal = () => {
 };
 checkUser();
 
-
 // deleteCar
 const deleteCar = async (id) => {
   try {
@@ -39,37 +38,36 @@ const deleteCar = async (id) => {
   }
 };
 
-
 // getData
 const getData = async () => {
   const { data } = await axios(url + "allCars");
-  data.forEach(({ marka, model, image, price, currency, year, engine, mileage, date }) => {
+  data.forEach(({ marka, model, image, price, currency, year, engine, mileage, date, id }) => {
     carsContainer.innerHTML += `<div class="swiper-slide my-3">
         <div class="border p-0 rounded car_box position-relative">
-        <a href="#" class="car_detail_link"></a>
+         <a href="./carDetail.html?id=${id}" class="car_detail_link"></a>
         <img class="car_image rounded-top" src="${image}">
-       
+         <i class="fa-regular fa-heart" onclick = "like(event)"></i>
         <div class="p-2">
           <h3 class="price">${price} ${currency}</h3>
           <p class="model">${marka} ${model}</p>
           <p class="info">${year} ${engine} ${mileage}</p>
           <p class="date">${date}</p>
-          <button class="btn btn-danger my-3">Delete</button>
         </div>
+        <div class="delete btn btn-danger m-3" onclick="handleDelete('${id}')">Delete</div>
         </div>
       </div>`;
   });
 };
 getData();
 
+
+
+
 // likes
 
-// const like = document.querySelector("i");
-
-// like.onclick = () => {
-//   console.log("test");
-// };
-
+const like = (e) => {
+  e.target.classList.toggle("green-bg");
+};
 
 
 /* giris funksiyasi yazmisiq,eger istifadecinin qeydiyyati varsa o zaman istifadeci daxil ola bilecek,yox yoxdursa error alacaq */
@@ -85,10 +83,7 @@ if (!user) {
         `,
       focusConfirm: false,
       preConfirm: () => {
-        return [
-          document.getElementById("username").value,
-          document.getElementById("password").value,
-        ];
+        return [document.getElementById("username").value, document.getElementById("password").value];
       },
     });
     if (formValues) {
@@ -106,8 +101,7 @@ if (!user) {
         console.log(currentUser);
         checkUser();
         location.reload();
-      } 
-      else {
+      } else {
         Swal.fire("istifadeci adi ve ya sifre yalnisdir");
       }
     }
@@ -122,10 +116,6 @@ if (!user) {
     checkUser();
   });
 }
-
-
-
-
 
 // swiperjs
 
