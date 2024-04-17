@@ -36,3 +36,4 @@ registerForm.addEventListener('submit',async(e) => {
     usernameInput.value = ""
     passwordInput.value = ""
 });
+

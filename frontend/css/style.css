@@ -33,4 +33,60 @@
 }
 
 
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
 
+
+#userBox {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    user-select: none;
+}
+
+.username {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.openUserInfo {
+    cursor: pointer;
+}
+
+
+.userModal {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 0 10px red;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    right: 0;
+    top: calc(100% + 20px);
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s;
+}
+
+.showUserModal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carDetailImage {
+    height: 400px;
+    object-fit: contain;
+}
+
+
+i {
+    position: absolute;
+    right: 10%;
+    top: 10px;
+    font-size: 30px;
+    color: red;
+}
